@@ -165,4 +165,38 @@ function booking_price()
 
 }
 
-booking_price()
+function decreasing_price()
+{
+	events.forEach(event=>{
+		bars.forEach(bar=>{
+			if(event.barId==bar.id)
+			{
+				if(event.persons>=10 && event.persons<20)
+				{
+					event.price=0.90*(event.time*bar.pricePerHour + event.persons*bar.pricePerPerson);
+				}
+				if(event.persons>=20 && event.persons<60)
+				{
+
+					event.price=0.70*(event.time*bar.pricePerHour + event.persons*bar.pricePerPerson);
+				}
+				if(event.persons>=60)
+				{
+					event.price=0.50*(event.time*bar.pricePerHour + event.persons*bar.pricePerPerson);
+				}
+				else
+				{
+					event.price=(event.time*bar.pricePerHour + event.persons*bar.pricePerPerson);
+				}
+			}
+		});
+
+	});
+	
+}
+
+//booking_price()
+
+decreasing_price()
+events.forEach(event=>{console.log("Price : "+event.price)})
+
