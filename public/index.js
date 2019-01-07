@@ -149,3 +149,20 @@ const actors = [{
 console.log(bars);
 console.log(events);
 console.log(actors);
+
+
+// Function that compute the booking price ! 
+function booking_price()
+{
+
+	events.forEach(event=>{
+ 	 bars.forEach(bar => {
+    	if (event.barId==bar.id) {
+     	 event.price = event.time*bar.pricePerHour + event.persons*bar.pricePerPerson;
+    	}
+  	});
+	});
+
+}
+
+booking_price()
