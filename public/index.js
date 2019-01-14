@@ -186,3 +186,23 @@ events.forEach(event=>{
 decreasing_price()
 events.forEach(event=>{console.log("Price : "+event.price)})
 
+
+// Step 3 
+
+function DispatchingMoney()
+{
+	events.forEach(event=>{
+		actors.forEach(actor=>{
+			if(event.id==actor.eventId)
+			{
+				actor.payment[1].amount=event.price*0.3
+				actor.payment[2].amount=(event.price*0.3)*0.50
+				actor.payment[3].amount=event.persons
+				actor.payment[4].amount=(event.price*0.3)-(actor.payment[2].amount + actor.payment[3].amount	)
+			}
+		})
+	})
+}
+
+DispatchingMoney()
+
