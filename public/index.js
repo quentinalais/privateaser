@@ -205,6 +205,8 @@ function DispatchingMoney()
 }
 
 
+DispatchingMoney()
+
 function Deductible()
 {
 	events.forEach(event=>{
@@ -216,5 +218,34 @@ function Deductible()
 	})
 }
 
-DispatchingMoney()
+Deductible()
+
+
+
+function PayTheActor()
+{
+	events.forEach(event=>{
+		actors.forEach(actor=>{
+			if(event.eventId==actor.id)
+			{
+				actor.payment[0].amount=event.price*0.30
+				actor.payment[1].amount=event.price*0.70
+				actor.payment[2].amount=0.50*(actor.payment[0].amount)
+				actor.payment[3].amount=event.persons
+				if(event.options.deductibleReduction==true)
+				{
+  					actor.payment[4].amount=200+(event.price*0.3)-actor.payment[2].amount-actor.payment[3].amount;
+  				}
+  				else
+  				{
+  					actor.payment[4].amount=5000+(event.price*0.3)-actor.payment[2].amount-actor.payment[3].amount;
+  				}
+
+			}
+		})
+	})
+}
+
+
+PayTheActor()
 
