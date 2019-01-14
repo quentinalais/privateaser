@@ -204,5 +204,17 @@ function DispatchingMoney()
 	})
 }
 
+
+function Deductible()
+{
+	events.forEach(event=>{
+
+		if(event.options[0]==true)
+		{
+			event.price=event.price + event.persons
+		}
+	})
+}
+
 DispatchingMoney()
 
